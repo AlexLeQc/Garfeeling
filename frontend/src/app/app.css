@@ -1,0 +1,440 @@
+/* Color Palette & Variables */
+:host {
+  --bg-gradient: radial-gradient(circle at top, #1e1b4b 0%, #0f0a1d 100%);
+  --panel-bg: rgba(255, 255, 255, 0.05);
+  --panel-border: rgba(255, 255, 255, 0.08);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --glow-color: rgba(99, 102, 241, 0.5);
+  
+  /* Sound Specific Colors */
+  --color-airhorn-start: #ff7e5f;
+  --color-airhorn-end: #feb47b;
+  --color-bruh-start: #6a11cb;
+  --color-bruh-end: #2575fc;
+  --color-crickets-start: #11998e;
+  --color-crickets-end: #38ef7d;
+  
+  display: block;
+  min-height: 100vh;
+  background: var(--bg-gradient);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ==========================================================================
+   Splash / Gate Screen
+   ========================================================================== */
+.splash-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.splash-card {
+  background: var(--panel-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--panel-border);
+  border-radius: 24px;
+  padding: 3rem 2rem;
+  text-align: center;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.logo-area {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.emoji-logo {
+  font-size: 3rem;
+  z-index: 2;
+}
+
+.pulse-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--glow-color);
+  opacity: 0.3;
+  animation: pulse 2s infinite ease-in-out;
+  z-index: 1;
+}
+
+.splash-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.05em;
+}
+
+.splash-subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+}
+
+.cta-button {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  color: #fff;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  border-radius: 14px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(99, 102, 241, 0.6);
+}
+
+.cta-button:active {
+  transform: translateY(1px);
+}
+
+.btn-icon {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2.5;
+}
+
+/* ==========================================================================
+   Dashboard Container
+   ========================================================================== */
+.dashboard-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* Header */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--panel-border);
+  padding-bottom: 1.5rem;
+}
+
+.app-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin: 0 0 0.25rem 0;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #e2e8f0 0%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #a855f7;
+  background: rgba(168, 85, 247, 0.15);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  padding: 0.125rem 0.5rem;
+  border-radius: 99px;
+  letter-spacing: normal;
+  text-transform: uppercase;
+}
+
+.app-subtitle {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  color: #10b981;
+  padding: 0.375rem 0.75rem;
+  border-radius: 99px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.pulse-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #10b981;
+  border-radius: 50%;
+  animation: pulse-dot 1.5s infinite;
+}
+
+/* Main Content */
+.soundboard-main {
+  flex: 1;
+}
+
+.instruction-banner {
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.15);
+  border-radius: 12px;
+  padding: 1rem;
+  font-size: 0.875rem;
+  color: #a5b4fc;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  line-height: 1.4;
+}
+
+.info-icon {
+  font-size: 1.125rem;
+}
+
+/* ==========================================================================
+   Sound Buttons Grid
+   ========================================================================== */
+.sound-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+}
+
+.sound-card-btn {
+  height: 120px;
+  border: 1px solid var(--panel-border);
+  border-radius: 16px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.sound-label {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+/* Sound-Specific Styling & Color Gradients */
+.sound-card-btn.airhorn {
+  background: linear-gradient(135deg, rgba(255, 126, 95, 0.15) 0%, rgba(254, 180, 123, 0.15) 100%);
+  border-color: rgba(255, 126, 95, 0.3);
+}
+.sound-card-btn.airhorn:hover {
+  background: linear-gradient(135deg, var(--color-airhorn-start) 0%, var(--color-airhorn-end) 100%);
+  box-shadow: 0 10px 20px rgba(255, 126, 95, 0.3);
+  border-color: transparent;
+}
+
+.sound-card-btn.bruh {
+  background: linear-gradient(135deg, rgba(106, 17, 203, 0.15) 0%, rgba(37, 117, 252, 0.15) 100%);
+  border-color: rgba(106, 17, 203, 0.3);
+}
+.sound-card-btn.bruh:hover {
+  background: linear-gradient(135deg, var(--color-bruh-start) 0%, var(--color-bruh-end) 100%);
+  box-shadow: 0 10px 20px rgba(106, 17, 203, 0.3);
+  border-color: transparent;
+}
+
+.sound-card-btn.crickets {
+  background: linear-gradient(135deg, rgba(17, 153, 142, 0.15) 0%, rgba(56, 239, 125, 0.15) 100%);
+  border-color: rgba(17, 153, 142, 0.3);
+}
+.sound-card-btn.crickets:hover {
+  background: linear-gradient(135deg, var(--color-crickets-start) 0%, var(--color-crickets-end) 100%);
+  box-shadow: 0 10px 20px rgba(17, 153, 142, 0.3);
+  border-color: transparent;
+}
+
+/* Animations & Interaction States */
+.sound-card-btn:hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
+.sound-card-btn:hover .sound-label {
+  transform: translateY(-4px);
+}
+
+.sound-card-btn:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+/* Sound Wave Animation Visual */
+.sound-wave {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 15px;
+  position: absolute;
+  bottom: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.sound-card-btn:hover .sound-wave {
+  opacity: 1;
+}
+
+.sound-wave span {
+  display: block;
+  width: 3px;
+  background-color: #fff;
+  border-radius: 2px;
+  animation: bounce 1s ease-in-out infinite alternate;
+}
+
+.sound-wave span:nth-child(1) {
+  height: 6px;
+  animation-delay: 0.1s;
+}
+.sound-wave span:nth-child(2) {
+  height: 14px;
+  animation-delay: 0.3s;
+}
+.sound-wave span:nth-child(3) {
+  height: 8px;
+  animation-delay: 0.2s;
+}
+
+/* Footer */
+.app-footer {
+  text-align: center;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--panel-border);
+}
+
+.app-footer p {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ==========================================================================
+   Keyframes / Animations
+   ========================================================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
+  }
+  70% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 15px rgba(99, 102, 241, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+  }
+}
+
+@keyframes pulse-dot {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+@keyframes bounce {
+  from {
+    transform: scaleY(0.4);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+/* ==========================================================================
+   Mobile-First Media Queries
+   ========================================================================== */
+@media (max-width: 480px) {
+  .splash-card {
+    padding: 2.5rem 1.5rem;
+    border-radius: 20px;
+  }
+  
+  .splash-title {
+    font-size: 2rem;
+  }
+  
+  .app-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .status-indicator {
+    align-self: flex-start;
+  }
+  
+  .sound-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+  
+  .sound-card-btn {
+    height: 100px;
+  }
+  
+  .sound-label {
+    font-size: 1.125rem;
+  }
+}

@@ -1,0 +1,61 @@
+@if (!hasInteracted) {
+  <!-- Mobile Interaction Gate / Splash Screen -->
+  <div class="splash-container">
+    <div class="splash-card">
+      <div class="logo-area">
+        <div class="pulse-ring"></div>
+        <span class="emoji-logo">🎉</span>
+      </div>
+      <h1 class="splash-title">Garfeeling</h1>
+      <p class="splash-subtitle">
+        Join the real-time student audio chaos! Synchronize sound effects across all devices on campus instantly.
+      </p>
+      <button id="join-chaos-btn" class="cta-button" (click)="enterSoundboard()">
+        Join the Chaos
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+      </button>
+    </div>
+  </div>
+} @else {
+  <!-- Main Soundboard Dashboard -->
+  <div class="dashboard-container">
+    <header class="app-header">
+      <div class="header-left">
+        <h1 class="app-title">Garfeeling <span class="badge">Live</span></h1>
+        <p class="app-subtitle">Real-time synchronized student soundboard</p>
+      </div>
+      <div class="status-indicator">
+        <span class="pulse-dot"></span>
+        Connected
+      </div>
+    </header>
+
+    <main class="soundboard-main">
+      <div class="instruction-banner">
+        <span class="info-icon">ℹ️</span>
+        Tap any button to broadcast and play the sound instantly on every connected screen!
+      </div>
+
+      <div class="sound-grid">
+        @for (sound of sounds; track sound.id) {
+          <button 
+            [id]="'sound-btn-' + sound.id"
+            class="sound-card-btn" 
+            [class]="sound.id"
+            (click)="onButtonClick(sound.id)">
+            <span class="sound-label">{{ sound.label }}</span>
+            <div class="sound-wave">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </button>
+        }
+      </div>
+    </main>
+
+    <footer class="app-footer">
+      <p>&copy; 2026 Garfeeling. Shared audio experiences for student integration.</p>
+    </footer>
+  </div>
+}
